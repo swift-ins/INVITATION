@@ -1,215 +1,146 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Invitation · Приглашение</title>
-  <meta name="description" content="Одностраничное приглашение RU/LV: свадьба, юбилей, вечеринка. Место, дата, время." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Приглашение</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Mulish:wght@300;400;600&display=swap" rel="stylesheet">
+
   <style>
     :root{
-      --bg:#faf7f2;
-      --fg:#144628;
-      --brand:#b48a60;
-      --brand-2:#c9a574;
-      --ring: #e6d9c8;
-      --accent:#b48a60; 
+      --bg:#F7F4FF;
+      --fg:#4A405F;
+      --accent:#ab1967;
+      --soft:#BFA8E2;
+      --border:#DCD3EB;
     }
+
     *{box-sizing:border-box}
-    html,body{margin:0;background:var(--bg);color:var(--fg);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
+    body{margin:0;background:var(--bg);color:var(--fg);font-family:'Mulish', sans-serif;}
     img{max-width:100%;display:block}
 
-    /* Заголовки */
-    .title,
-    .subtitle,
-    .section-title,
-    .footer-text,
-    .brand-text {
-      font-family:'Playfair Display',serif;
-      color:#b8860b;
-      text-align:center;
-      text-transform:uppercase;
-      letter-spacing:0.08em;
-      font-weight:700;
-      text-shadow:0 2px 6px rgba(184,134,11,0.25);
-      margin:0;
+    .topbar{padding:14px;text-align:center;border-bottom:1px solid var(--border);}
+    .brand-text{font-family:'Marcellus',serif;color:var(--accent);text-transform:uppercase;font-size:1.2rem;}
+
+    .hero{display:grid;place-items:center;padding:40px 16px}
+    .hero-inner{width:min(900px,100%);display:grid;gap:24px;text-align:center}
+
+    .title{font-family:'Marcellus',serif;color:var(--accent);font-size:clamp(34px,7vw,64px);margin:0;}
+    .subtitle{font-size:clamp(17px,4vw,24px);margin:0;color:var(--soft);font-weight:400;}
+
+    /* Исправление изображения — теперь без уменьшения */
+    .hero-media{
+      width:100%;
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:0 4px 14px rgba(0,0,0,0.07);
     }
-    .title{font-size:clamp(32px,8vw,60px);}
-    .subtitle{font-size:clamp(16px,4vw,22px);margin:4px 0 12px;}
+    .hero-media img{
+      width:100%;
+      height:auto;
+      display:block;
+      object-fit:cover;
+    }
 
-    /* Герой */
-    .hero{position:relative;min-height:92svh;display:grid;place-items:center;padding:24px;overflow:hidden}
-    .hero-inner{width:min(980px,100%);display:grid;gap:20px;align-items:center}
-    .hero-media{aspect-ratio: 16/9;background:#ddd;border-radius:16px;overflow:hidden}
-    .hero-media img{width:100%;height:100%;object-fit:cover}
+    .badges{
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-top:8px;
+    }
 
-    /* Бейджи */
-    .badges{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:12px}
     .badge{
       padding:10px 14px;
-      border:1px solid var(--ring);
+      border:1px solid var(--border);
       border-radius:999px;
-      background:#fff;
-      font-family:'Playfair Display',serif;
-      text-transform:uppercase;
-      font-size:1.1rem;
-      font-weight:700;
-      color:#b8860b;
-      letter-spacing:0.07em;
-      text-shadow:0 1px 3px rgba(184,134,11,0.2);
-      transition: all 0.3s ease;
-      cursor: default;
-    }
-    .badge:hover {
-      background: #fff8e1;
-      box-shadow: 0 0 12px rgba(184,134,11,0.6), 0 0 20px rgba(201,165,116,0.5);
-      transform: scale(1.05);
-    }
-
-    /* Шапка */
-    .topbar{position:sticky;top:0;z-index:50;background:rgba(250,247,242,.8);backdrop-filter:blur(8px);border-bottom:1px solid var(--ring)}
-    .topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;width:min(1100px,100%);margin:0 auto}
-    .brand{display:flex;align-items:center;gap:10px}
-    .logo{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:inset 0 0 0 3px #fff8}
-    .lang{display:flex;gap:8px}
-    .btn{
-      appearance:none;
-      border:1px solid var(--ring);
-      background:#fff;
-      border-radius:999px;
-      padding:8px 12px;
-      font-weight:700;
-      cursor:pointer;
+      font-family:'Marcellus',serif;
       color:var(--accent);
-      transition: all 0.3s ease;
-    }
-    .btn:hover{
-      background:#ffeaea;
-      box-shadow:0 0 8px rgba(178,34,34,0.4);
+      text-transform:uppercase;
+      font-weight:600;
+      background:white;
     }
 
-    /* Текст */
-    .description{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:2.0rem;line-height:1.6;color:var(--fg);margin-top:12px;text-align:center;}
-    .divider{margin:24px auto;height:2px;width:60px;background:linear-gradient(90deg,var(--brand),var(--brand-2));border-radius:2px;}
-    .program{margin-top:20px;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.8rem;line-height:1.6;color:var(--fg)}
-    .program div{margin:6px 0}
+    .section-title{
+      font-family:'Marcellus',serif;
+      color:var(--accent);
+      text-transform:uppercase;
+      margin-top:28px;
+      font-size:1.5rem;
+    }
 
-    .footer{padding:36px 16px;text-align:center}
+    .description,
+    .program{
+      font-family:'Marcellus',serif;
+      font-size:1.7rem;
+      line-height:1.6;
+      color:var(--fg);
+    }
+
+    .divider{
+      margin:26px auto;
+      height:2px;
+      width:80px;
+      background:var(--accent);
+      opacity:.45;
+      border-radius:2px;
+    }
+
+    .footer{
+      padding:36px 16px;
+      text-align:center;
+      font-family:'Marcellus',serif;
+      color:var(--soft);
+      font-size:1.1rem;
+    }
   </style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="topbar-inner">
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <span class="brand-text" data-i18n="brand">Приглашение</span>
-      </div>
-      <div class="lang" role="group" aria-label="Language">
-        <button class="btn" data-lang="ru">RU</button>
-        <button class="btn" data-lang="lv">LV</button>
-      </div>
+
+<header class="topbar">
+  <span class="brand-text">Приглашение</span>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+
+    <h1 class="title">Давно не виделись!</h1>
+    <p class="subtitle">Девочки, приглашаю в гости!</p>
+
+    <div class="hero-media">
+      <img src="images/net3.jpg" alt="">
     </div>
-  </header>
 
-  <section class="hero">
-    <div class="hero-inner">
-      <h1 class="title" data-i18n="title">Алина & Дмитрий</h1>
-      <p class="subtitle" data-i18n="subtitle">Мы будем счастливы разделить с вами наш особенный день.</p>
-      <div class="hero-media">
-        <img src="images/wed.jpeg" alt="Фото приглашения / Event cover" />
-      </div>
-      <div class="badges">
-        <span class="badge" data-i18n="date">12 октября 2025</span>
-        <span class="badge" data-i18n="time">16:30</span>
-        <span class="badge" data-i18n="place">Bīriņu Pils, Bīriņi, Vidrižu pagasts, Limbažu novads, LV-4013</span>
-      </div>
-
-      <div class="divider"></div>
-      <h2 class="section-title" data-i18n="about-title">О событии</h2>
-      <div class="description" data-i18n="about">
-        Приглашаем Вас на наш праздник. Этот день будет наполнен радостью, любовью и светлыми моментами. Приятные сюрпризы ждут всех участников церимонии. Надеемся, что время, проведенное вместе, станет незабываемым для всех.
-      </div>
-
-      <div class="divider"></div>
-      <h2 class="section-title" data-i18n="program-title">Программа вечера</h2>
-      <div class="program" data-i18n="program">
-        <div>16:30 — Сбор гостей, welcome drink</div>
-        <div>17:00 — Церемония бракосочетания</div> 
-        <div>21:00 — Сюрприз для гостей</div>        
-        <div>23:00 — Фейерверк</div>
-        <div>На протяжении всего вечера с нами шоу балет " ТОДЕС" и профессиональный фотограф Влад Масляков</div>
-      </div>
+    <div class="badges">
+      <span class="badge">15 ноября 2025</span>
+      <span class="badge">17.00</span>
+      <span class="badge">Puces 49-14 ( 5 этаж) . Riga KOD: #3749</span>
     </div>
-  </section>
 
-  <footer class="footer">
-    <p class="footer-text">© 2025 · Алина & Дмитрий</p>
-  </footer>
+    <div class="divider"></div>
+    <h2 class="section-title">О событии</h2>
+    <div class="description">
+      Привет. Лето закончилось, отпуска позади и наступило время увидиться.  💜
+      Нам есть, что рассказать друг другу и поделиться новостями. К столу берите все, что захотите. Буду рада встрече.
+    </div>
 
- <script>
-  const i18n = {
-    ru: {
-      brand: "Приглашение",
-      title: "Алина & Дмитрий",
-      subtitle: "Мы будем счастливы разделить с вами наш особенный день",
-      date: "12 октября 2025",
-      time: "16:30",
-      place: "Bīriņu Pils, Bīriņi, Vidrižu pagasts, Limbažu novads, LV-4013",
-      "about-title": "О событии",
-      about: "Приглашаем Вас на наш праздник. Этот день будет наполнен радостью, любовью и светлыми моментами. Приятные сюрпризы ждут всех участником церимонии. Надеемся, что время, проведенное вместе, станет незабываемым для всех.",
-      "program-title": "Программа вечера",
-      program: `
-        <div>16:30 — Сбор гостей, welcome drink</div>
-        <div>17:00 — Церемония</div>
-        <div>18:00 — Ужин и танцы</div>
-        <div>21:00 — Сюрприз для гостей</div>  
-        <div>23:00 — Фейерверк</div>
-        <div>На протяжении всего вечера с нами шоу балет " ТОДЕС" и профессиональный фотограф Влад Масляков</div>
-      `,
-      footer: "© 2025 · Алина & Дмитрий"
-    },
-    lv: {
-      brand: "Ielūgums",
-      title: "Alīna & Dmitrijs",
-      subtitle: "Mēs būsim laimīgi dalīties ar jums mūsu īpašajā dienā",
-      date: "2025. gada 12. oktobris",
-      time: "16:30",
-      place: "Bīriņu Pils, Bīriņi, Vidrižu pagasts, Limbažu novads, LV-4013",
-      "about-title": "Par notikumu",
-      about: "Aicinām Jūs uz mūsu svinībām. Šī diena būs piepildīta ar prieku, mīlestību un gaišiem mirkļiem. Visus ceremonijas dalībniekus gaida patīkami pārsteigumi. Ceram, ka kopā pavadītais laiks kļūs par neaizmirstamu pieredzi ikvienam.",
-      "program-title": "Vakara programma",
-      program: `
-        <div>16:30 — Viesu ierašanās, welcome drink</div>
-        <div>17:00 — Laulību ceremonija</div>
-        <div>18:00 — Vakariņas un dejas</div>
-        <div>21:00 — Pārsteigums viesiem</div>  
-        <div>23:00 — Salūts</div>
-        <div>Visa vakara mūs pavadīs šou balets "TODES" un profesionālais fotogrāfs Vlad Masļakovs.</div>
-      `,
-      footer: "© 2025 · Alīna & Dmitrijs"
-    }
-  };
+    <div class="divider"></div>
+    <h2 class="section-title">Девиз вечера: “The only thing better than Prosecco is more Prosecco.” 🎀 </h2>
+    <h2 class="section-title">Программа вечера: </h2>
+    
+    <div class="program">
+      <div>17.00 — Сбор девочек по намеченному адресу, welcome drink ✨</div>
+      <div>17:10 — Тёплая встреча и накрытие стола ✨</div> 
+      <div>18:00 — Ожидание опоздавших и опять welcome drink ✨</div> 
+      <div>18:30 — Все девочки в сборе и понеслось...✨</div>    
 
-  const buttons = document.querySelectorAll("[data-lang]");
-  buttons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const lang = btn.dataset.lang;
-      document.querySelectorAll("[data-i18n]").forEach(el => {
-        const key = el.dataset.i18n;
-        if(i18n[lang][key]) {
-          if (key === "program") {
-            el.innerHTML = i18n[lang][key];
-          } else {
-            el.textContent = i18n[lang][key];
-          }
-        }
-      });
-      document.querySelector(".footer-text").textContent = i18n[lang].footer;
-    });
-  });
-</script>
-</body> 
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">© 2025 · Ваша Наташа</footer>
+
+</body>
 </html>
-
