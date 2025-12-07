@@ -1,215 +1,155 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Invitation · Приглашение</title>
-  <meta name="description" content="Одностраничное приглашение RU/LV: свадьба, юбилей, вечеринка. Место, дата, время." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#faf7f2;
-      --fg:#144628;
-      --brand:#b48a60;
-      --brand-2:#c9a574;
-      --ring: #e6d9c8;
-      --accent:#b48a60; 
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;background:var(--bg);color:var(--fg);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
-    img{max-width:100%;display:block}
+    <meta charset="UTF-8">
+    <title>Литературный Салон</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('https://i.imgur.com/6M7P1rp.jpg'); /* мягкая бежевая бумага */
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: "Georgia", serif;
+            color: #3a2f28;
+            line-height: 1.7;
+        }
 
-    /* Заголовки */
-    .title,
-    .subtitle,
-    .section-title,
-    .footer-text,
-    .brand-text {
-      font-family:'Playfair Display',serif;
-      color:#b8860b;
-      text-align:center;
-      text-transform:uppercase;
-      letter-spacing:0.08em;
-      font-weight:700;
-      text-shadow:0 2px 6px rgba(184,134,11,0.25);
-      margin:0;
-    }
-    .title{font-size:clamp(32px,8vw,60px);}
-    .subtitle{font-size:clamp(16px,4vw,22px);margin:4px 0 12px;}
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: rgba(255, 248, 240, 0.92);
+            padding: 40px 50px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(60, 45, 35, 0.25);
+        }
 
-    /* Герой */
-    .hero{position:relative;min-height:92svh;display:grid;place-items:center;padding:24px;overflow:hidden}
-    .hero-inner{width:min(980px,100%);display:grid;gap:20px;align-items:center}
-    .hero-media{aspect-ratio: 16/9;background:#ddd;border-radius:16px;overflow:hidden}
-    .hero-media img{width:100%;height:100%;object-fit:cover}
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #5a4334;
+            text-shadow: 1px 1px 1px #fff;
+        }
 
-    /* Бейджи */
-    .badges{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:12px}
-    .badge{
-      padding:10px 14px;
-      border:1px solid var(--ring);
-      border-radius:999px;
-      background:#fff;
-      font-family:'Playfair Display',serif;
-      text-transform:uppercase;
-      font-size:1.1rem;
-      font-weight:700;
-      color:#b8860b;
-      letter-spacing:0.07em;
-      text-shadow:0 1px 3px rgba(184,134,11,0.2);
-      transition: all 0.3s ease;
-      cursor: default;
-    }
-    .badge:hover {
-      background: #fff8e1;
-      box-shadow: 0 0 12px rgba(184,134,11,0.6), 0 0 20px rgba(201,165,116,0.5);
-      transform: scale(1.05);
-    }
+        .block {
+            margin-bottom: 32px;
+            white-space: pre-wrap;
+        }
 
-    /* Шапка */
-    .topbar{position:sticky;top:0;z-index:50;background:rgba(250,247,242,.8);backdrop-filter:blur(8px);border-bottom:1px solid var(--ring)}
-    .topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;width:min(1100px,100%);margin:0 auto}
-    .brand{display:flex;align-items:center;gap:10px}
-    .logo{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:inset 0 0 0 3px #fff8}
-    .lang{display:flex;gap:8px}
-    .btn{
-      appearance:none;
-      border:1px solid var(--ring);
-      background:#fff;
-      border-radius:999px;
-      padding:8px 12px;
-      font-weight:700;
-      cursor:pointer;
-      color:var(--accent);
-      transition: all 0.3s ease;
-    }
-    .btn:hover{
-      background:#ffeaea;
-      box-shadow:0 0 8px rgba(178,34,34,0.4);
-    }
-
-    /* Текст */
-    .description{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:2.0rem;line-height:1.6;color:var(--fg);margin-top:12px;text-align:center;}
-    .divider{margin:24px auto;height:2px;width:60px;background:linear-gradient(90deg,var(--brand),var(--brand-2));border-radius:2px;}
-    .program{margin-top:20px;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.8rem;line-height:1.6;color:var(--fg)}
-    .program div{margin:6px 0}
-
-    .footer{padding:36px 16px;text-align:center}
-  </style>
+        .name {
+            font-weight: bold;
+            color: #5a3b20;
+            background: rgba(255, 230, 200, 0.6);
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="topbar-inner">
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <span class="brand-text" data-i18n="brand">Приглашение</span>
-      </div>
-      <div class="lang" role="group" aria-label="Language">
-        <button class="btn" data-lang="ru">RU</button>
-        <button class="btn" data-lang="lv">LV</button>
-      </div>
-    </div>
-  </header>
 
-  <section class="hero">
-    <div class="hero-inner">
-      <h1 class="title" data-i18n="title">Алина & Дмитрий</h1>
-      <p class="subtitle" data-i18n="subtitle">Мы будем счастливы разделить с вами наш особенный день.</p>
-      <div class="hero-media">
-        <img src="images/wed.jpeg" alt="Фото приглашения / Event cover" />
-      </div>
-      <div class="badges">
-        <span class="badge" data-i18n="date">12 октября 2025</span>
-        <span class="badge" data-i18n="time">16:30</span>
-        <span class="badge" data-i18n="place">Bīriņu Pils, Bīriņi, Vidrižu pagasts, Limbažu novads, LV-4013</span>
-      </div>
+<div class="container">
+<h1>Литературный Салон</h1>
 
-      <div class="divider"></div>
-      <h2 class="section-title" data-i18n="about-title">О событии</h2>
-      <div class="description" data-i18n="about">
-        Приглашаем Вас на наш праздник. Этот день будет наполнен радостью, любовью и светлыми моментами. Приятные сюрпризы ждут всех участников церимонии. Надеемся, что время, проведенное вместе, станет незабываемым для всех.
-      </div>
+<div class="block">
+Добрый вечер, дорогие друзья.
 
-      <div class="divider"></div>
-      <h2 class="section-title" data-i18n="program-title">Программа вечера</h2>
-      <div class="program" data-i18n="program">
-        <div>16:30 — Сбор гостей, welcome drink</div>
-        <div>17:00 — Церемония бракосочетания</div> 
-        <div>21:00 — Сюрприз для гостей</div>        
-        <div>23:00 — Фейерверк</div>
-        <div>На протяжении всего вечера с нами шоу балет " ТОДЕС" и профессиональный фотограф Влад Масляков</div>
-      </div>
-    </div>
-  </section>
+Мы открываем наш литературный салон. Это  место, где слово снова становится живым, где оно звучит так же искренне, как когда-то в гостиных, где собирались поэты, музыканты и мыслители. Вместе мы окунемся в красоту былой атмосферы и тонкости чувств и рвения душ.
 
-  <footer class="footer">
-    <p class="footer-text">© 2025 · Алина & Дмитрий</p>
-  </footer>
+Но прежде чем начнём, давайте ненадолго вернёмся к истокам.
+</div>
 
- <script>
-  const i18n = {
-    ru: {
-      brand: "Приглашение",
-      title: "Алина & Дмитрий",
-      subtitle: "Мы будем счастливы разделить с вами наш особенный день",
-      date: "12 октября 2025",
-      time: "16:30",
-      place: "Bīriņu Pils, Bīriņi, Vidrižu pagasts, Limbažu novads, LV-4013",
-      "about-title": "О событии",
-      about: "Приглашаем Вас на наш праздник. Этот день будет наполнен радостью, любовью и светлыми моментами. Приятные сюрпризы ждут всех участником церимонии. Надеемся, что время, проведенное вместе, станет незабываемым для всех.",
-      "program-title": "Программа вечера",
-      program: `
-        <div>16:30 — Сбор гостей, welcome drink</div>
-        <div>17:00 — Церемония</div>
-        <div>18:00 — Ужин и танцы</div>
-        <div>21:00 — Сюрприз для гостей</div>  
-        <div>23:00 — Фейерверк</div>
-        <div>На протяжении всего вечера с нами шоу балет " ТОДЕС" и профессиональный фотограф Влад Масляков</div>
-      `,
-      footer: "© 2025 · Алина & Дмитрий"
-    },
-    lv: {
-      brand: "Ielūgums",
-      title: "Alīna & Dmitrijs",
-      subtitle: "Mēs būsim laimīgi dalīties ar jums mūsu īpašajā dienā",
-      date: "2025. gada 12. oktobris",
-      time: "16:30",
-      place: "Bīriņu Pils, Bīriņi, Vidrižu pagasts, Limbažu novads, LV-4013",
-      "about-title": "Par notikumu",
-      about: "Aicinām Jūs uz mūsu svinībām. Šī diena būs piepildīta ar prieku, mīlestību un gaišiem mirkļiem. Visus ceremonijas dalībniekus gaida patīkami pārsteigumi. Ceram, ka kopā pavadītais laiks kļūs par neaizmirstamu pieredzi ikvienam.",
-      "program-title": "Vakara programma",
-      program: `
-        <div>16:30 — Viesu ierašanās, welcome drink</div>
-        <div>17:00 — Laulību ceremonija</div>
-        <div>18:00 — Vakariņas un dejas</div>
-        <div>21:00 — Pārsteigums viesiem</div>  
-        <div>23:00 — Salūts</div>
-        <div>Visa vakara mūs pavadīs šou balets "TODES" un profesionālais fotogrāfs Vlad Masļakovs.</div>
-      `,
-      footer: "© 2025 · Alīna & Dmitrijs"
-    }
-  };
+<div class="block name">---   Слово Саше  (история происхождения салонов)   ---</div>
 
-  const buttons = document.querySelectorAll("[data-lang]");
-  buttons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const lang = btn.dataset.lang;
-      document.querySelectorAll("[data-i18n]").forEach(el => {
-        const key = el.dataset.i18n;
-        if(i18n[lang][key]) {
-          if (key === "program") {
-            el.innerHTML = i18n[lang][key];
-          } else {
-            el.textContent = i18n[lang][key];
-          }
-        }
-      });
-      document.querySelector(".footer-text").textContent = i18n[lang].footer;
-    });
-  });
-</script>
-</body> 
+<div class="block">
+А мы начнем историю нашего Литературного Салона с прочтения классики.  
+Пушкин. «Письмо Татьяны к Онегину» — это образец искренности, внутреннего переживания, голос молодой женщины, которому суждено было стать вечным.
+</div>
+
+<div class="block name">---   Лена Эвеле (Письмо Татьяны)   ---</div>
+
+<div class="block">
+«Письмо Татьяны» — это голос сердца, будто произнесённый шёпотом, но услышанный сквозь века. Пушкин дал русской литературе эмоциональную ясность, гармонию, внутреннюю правду.
+
+Но время меняется.  
+И вместе со временем меняется тон стихотворной речи.
+
+От пушкинской гармонии XIX века Россия вступает в XX — век стремительных перемен, тревог, надежд, столкновений.  
+И если Пушкин говорил голосом души, то поэты Серебряного века начали говорить голосом времени.  
+И порой этот голос был уже не шёпотом, а криком — криком поколения, стоящего на пороге революции.
+
+И сейчас мы окунёмся в этот бурный, стремительный поток — в революционный бунт стихов Серебряного века, где слово стало оружием, манифестом и отражением великого потрясения, которое переживала страна.
+</div>
+
+<div class="block name">---   Сергей (Попури: Посвящение Революции)   ---</div>
+
+<div class="block">
+Но после любого бунта, после грозы, человеку снова нужно вернуться к себе — к тому, что делает его живым.  
+К чувствам.  
+К любви.  
+К человеческой доброте, которая, как ни странно, переживает любые эпохи — и революции, и войны, и перемены.
+
+Эдуард Асадов — поэт, который умел говорить о самом простом так, будто это главное в жизни. Его стихи — о любви, надежде, верности, о силе доброго слова.  
+О том, что остаётся с человеком, когда шум эпохи стихает.
+</div>
+
+<div class="block name">--- Ян (Юлиана)  (Асадов) ---</div>
+
+<div class="block">
+Но литература многогранна.  
+После лирики Асадова мы движемся к поэту совершенно иной природы — к автору, который говорил не сердцем, а мыслью.
+
+Иосиф Бродский — это уже не интонация светлой романтики, а язык философских размышлений, одиночества, внутренней свободы.  
+Если Асадов обращается к чувствам, то Бродский обращается к сознанию — к тому, что человек осознаёт о мире, о времени, о самом себе.
+</div>
+
+<div class="block name">--- Игорь  (И.Бродский)   ---</div>
+
+<div class="block">
+Но русская поэзия многолика, и в ней есть другой, очень важный голос — голос земли, трудовой судьбы, народного характера.  
+Голос, который звучит просто, но глубоко; спокойно, но с удивительной силой.
+
+И этот голос — Александр Твардовский.
+
+Если Бродский часто обращается к вечности, то Твардовский — к человеку, который идёт по земле: к солдату, к труженику, к человеку в пути.  
+Его поэзия — это история страны, рассказанная через судьбу каждого.  
+Это честность, прямота, юмор, боль и свет — всё вместе, без прикрас.
+</div>
+
+<div class="block name">--- Роман (Твардовский) ---</div>
+
+<div class="block">
+После поэзии, наполненной характером и широтой народной жизни, хочется сделать шаг в сторону более камерного, почти разговорного жанра.  
+Жанра наблюдений, тонкого юмора, точных психологических деталей.
+
+И здесь нас встречает Виктория Токарева.
+
+Её проза — это будто беседа за кухонным столом, где каждой истории веришь безоговорочно.  
+У неё нет громких жестов — только правда о людях, их слабостях, ожиданиях, любви, попытках понять себя.  
+Токарева умеет смотреть на жизнь под углом мягкой иронии, и в этой иронии — удивительная доброта.
+</div>
+
+<div class="block name">--- Ира (Виктория Токарева) ---</div>
+
+<div class="block">
+Друзья, мы подходим к заключительной части.  
+Хочется завершить наш Литературный Салон в тепле, в лёгком свете, в ощущении того, что жизнь порой дарит маленькие, но очень важные мгновения.
+
+Именно такое чувство дарит нам стихотворение Хуан Рамон Хименеса «Нечаянная радость».
+
+Это стих о том, что счастье не всегда громкое, не всегда ожидаемое. Иногда оно приходит тихо — как луч света, который вдруг падает на ладонь.  
+Следующее стихотворение — о маленьком чуде, которое может случиться в самый обычный момент.
+</div>
+
+<div class="block name">--- Хименес (Нечаянная радость и финальная речь режиссера) ---</div>
+
+<div class="block">
+Спасибо вам, дорогие друзья, за вашу собственную «нечаянную радость» — радость общения, живого слова, присутствия и тепла.
+</div>
+
+</div>
+
+</body>
 </html>
-
