@@ -2,104 +2,253 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Литературный салон</title>
 
 <!-- Винтажный шрифт -->
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-    body {
-        font-family: 'Cormorant Garamond', serif;
-        background: #f5f5f5;
+    * {
+        box-sizing: border-box;
         margin: 0;
         padding: 0;
-        color: #222;
+    }
+
+    html, body {
+        height: 100%;
+        min-height: 100vh;
+    }
+
+    body {
+        font-family: 'Cormorant Garamond', serif;
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        color: #f5f1e8;
+        line-height: 1.6;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
     }
 
     h1 {
         text-align: center;
-        margin-top: 30px;
-        font-size: 42px;
-        letter-spacing: 2px;
+        padding: 25px 20px;
+        font-size: 2.8rem;
+        letter-spacing: 3px;
+        background: #2c1810;
+        color: #f5e6d3;
+        margin: 0;
+        border-bottom: 4px solid #d4af37;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     }
 
     .container {
-        width: 90%;
-        max-width: 900px;
-        margin: 40px auto;
+        flex: 1;
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 25px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
     }
 
     .block {
-        border: 2px solid #000;
-        padding: 20px;
-        margin-bottom: 25px;
-        border-radius: 6px;
+        border: 3px solid #d4af37;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .block:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(212, 175, 55, 0.2);
     }
 
     .style-a {
-        background: #e6e6e6; /* серый */
+        background: linear-gradient(to right, #2c1810, #3a2418);
+        color: #f5e6d3;
     }
 
     .style-b {
-        background: #ffffff; /* белый */
+        background: linear-gradient(to right, #1e3a2b, #2a4a37);
+        color: #f0f7f4;
     }
 
     .block h2 {
         margin-top: 0;
-        margin-bottom: 12px;
-        font-size: 28px;
+        margin-bottom: 20px;
+        font-size: 2rem;
+        color: #d4af37;
+        border-bottom: 2px solid rgba(212, 175, 55, 0.5);
+        padding-bottom: 10px;
+    }
+
+    .photo-container {
+        width: 100%;
+        margin: 20px 0;
+        overflow: hidden;
+        border-radius: 8px;
+        border: 2px solid #d4af37;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
 
     .photo {
         width: 100%;
-        max-width: 300px;
-        border: 1px solid #333;
-        margin-bottom: 10px;
+        height: 220px;
+        object-fit: cover;
         display: block;
+        transition: transform 0.5s ease;
+    }
+
+    .photo:hover {
+        transform: scale(1.03);
     }
 
     details {
-        margin-top: 10px;
-        font-size: 18px;
+        margin-top: 20px;
+        font-size: 1.2rem;
+        background: rgba(0,0,0,0.3);
+        border-radius: 8px;
+        padding: 15px;
+    }
+
+    summary {
+        font-weight: 700;
+        color: #d4af37;
+        font-size: 1.3rem;
+        cursor: pointer;
+        padding: 10px;
+        background: rgba(0,0,0,0.2);
+        border-radius: 6px;
+        transition: background 0.3s ease;
+    }
+
+    summary:hover {
+        background: rgba(212, 175, 55, 0.1);
+    }
+
+    details[open] summary {
+        margin-bottom: 15px;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    details p {
+        padding: 0 10px 10px;
+        line-height: 1.7;
     }
 
     footer {
         text-align: center;
-        padding: 20px;
-        border-top: 2px solid #000;
-        margin-top: 40px;
-        font-size: 20px;
+        padding: 25px 20px;
+        background: #2c1810;
+        color: #f5e6d3;
+        font-size: 1.3rem;
+        border-top: 4px solid #d4af37;
+        margin-top: 30px;
+    }
+
+    footer:before {
+        content: "☙";
+        margin-right: 10px;
+        color: #d4af37;
+        font-size: 1.5rem;
+    }
+
+    footer:after {
+        content: "❧";
+        margin-left: 10px;
+        color: #d4af37;
+        font-size: 1.5rem;
     }
 
     /* АДАПТАЦИЯ ПОД ТЕЛЕФОН */
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
+        body {
+            min-height: 100vh;
+            height: auto;
+        }
+        
         h1 {
-            font-size: 32px;
-            margin-top: 20px;
-        }
-
-        .block {
-            padding: 15px;
-        }
-
-        .block h2 {
-            font-size: 22px;
-        }
-
-        details {
-            font-size: 16px;
-        }
-
-        footer {
-            font-size: 18px;
+            font-size: 2.2rem;
+            padding: 20px 15px;
+            letter-spacing: 2px;
         }
 
         .container {
-            margin: 20px auto;
+            padding: 20px 15px;
+            gap: 20px;
+        }
+
+        .block {
+            padding: 20px 18px;
+            border-width: 2px;
+        }
+
+        .block h2 {
+            font-size: 1.7rem;
+            margin-bottom: 15px;
+        }
+
+        .photo-container {
+            margin: 15px 0;
         }
 
         .photo {
-            max-width: 100%;
+            height: 200px;
+        }
+
+        details {
+            font-size: 1.1rem;
+            padding: 12px;
+        }
+
+        summary {
+            font-size: 1.2rem;
+            padding: 8px;
+        }
+
+        footer {
+            font-size: 1.2rem;
+            padding: 20px 15px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 1.9rem;
+            padding: 18px 12px;
+        }
+
+        .container {
+            padding: 15px 12px;
+            gap: 18px;
+        }
+
+        .block {
+            padding: 18px 15px;
+        }
+
+        .block h2 {
+            font-size: 1.5rem;
+        }
+
+        .photo {
+            height: 180px;
+        }
+
+        details {
+            font-size: 1rem;
+        }
+
+        summary {
+            font-size: 1.1rem;
+        }
+
+        footer {
+            font-size: 1.1rem;
+            padding: 18px 12px;
         }
     }
 </style>
@@ -114,37 +263,44 @@
     <!-- Блок 1 -->
     <div class="block style-a">
         <h2>Событие</h2>
-        <img class="photo" src="https://via.placeholder.com/300x200?text=Photo" alt="Фото события">
+        <div class="photo-container">
+            <img class="photo" src="https://via.placeholder.com/600x300/2c1810/d4af37?text=Литературный+вечер" alt="Фото события">
+        </div>
         <details>
-            <summary>Подробнее</summary>
+            <summary>Подробнее о событии</summary>
             <p>
-            В этот вечер соберутся друзья и единомышленники, объединённые единым стремлением к Прекрасному.  
-            Мы прочтём друг другу любимые произведения, оживим в памяти забытые строки, позволим слову вновь обрести силу.  
-            И, разделив эмоции и откровения, создадим атмосферу истинного духовного единства, подобающую лучшим традициям литературных салонов.
+                В этот вечер соберутся друзья и единомышленники, объединённые единым стремлением к Прекрасному.  
+                Мы прочтём друг другу любимые произведения, оживим в памяти забытые строки, позволим слову вновь обрести силу.  
+                И, разделив эмоции и откровения, создадим атмосферу истинного духовного единства, подобающую лучшим традициям литературных салонов.
             </p>
-
         </details>
     </div>
 
     <!-- Блок 2 -->
     <div class="block style-b">
         <h2>Место проведения</h2>
-        <img class="photo" src="https://via.placeholder.com/300x200?text=Location" alt="Фото места">
+        <div class="photo-container">
+            <img class="photo" src="https://via.placeholder.com/600x300/1e3a2b/d4af37?text=Имение+Vetspidini" alt="Фото места">
+        </div>
         <details>
-            <summary>Подробнее</summary>
+            <summary>Подробнее о месте</summary>
             <p>
-            Ждем всех 27 декабря 2025 года в 17-00 в имении  "Vetspidini".</p>
-           <p>P.S. Madame Iren и Monsieur Igor выражают надежду на своевременное прибытие гостей
-        </p>
+                Ждем всех 27 декабря 2025 года в 17-00 в имении "Vetspidini".
+            </p>
+            <p>
+                P.S. Madame Irin и Monsieur Igor выражают надежду на своевременное прибытие гостей.
+            </p>
         </details>
     </div>
 
     <!-- Блок 3 -->
     <div class="block style-a">
         <h2>Фуршет</h2>
-        <img class="photo" src="https://via.placeholder.com/300x200?text=Food" alt="Фото фуршета">
+        <div class="photo-container">
+            <img class="photo" src="https://via.placeholder.com/600x300/2c1810/d4af37?text=Изящные+закуски" alt="Фото фуршета">
+        </div>
         <details>
-            <summary>Подробнее</summary>
+            <summary>Подробнее о фуршете</summary>
             <p>
                 Хозяева салона объявляют новые утончённые традиции.  
                 В нашем доме не будет места суетливой возне на кухне и шумным приготовлениям.  
@@ -158,9 +314,11 @@
     <!-- Блок 4 -->
     <div class="block style-b">
         <h2>Dress code</h2>
-        <img class="photo" src="https://via.placeholder.com/300x200?text=Dress+Code" alt="Фото стиля">
+        <div class="photo-container">
+            <img class="photo" src="https://via.placeholder.com/600x300/1e3a2b/d4af37?text=Вечерние+наряды" alt="Фото стиля">
+        </div>
         <details>
-            <summary>Подробнее</summary>
+            <summary>Подробнее о дресс-коде</summary>
             <p>
                 Дамы приглашаются в нарядах, приближённых к вечерним — строгих и изысканных, выдержанных в спокойных и благородных тонах.  
                 Платья должны подчёркивать грацию и утончённость, создавая атмосферу благородного собрания.  
@@ -172,14 +330,11 @@
 
 </div>
 
-</div>
-
 <footer>
-    По организационным вопросам звоните хозяйке салона Madame Iren 
+    По организационным вопросам звоните хозяйке салона Madame Irin
 </footer>
 
 </body>
 </html>
-
 
 
