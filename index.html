@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Литературный салон</title>
 
 <!-- Винтажный шрифт -->
@@ -18,6 +18,7 @@
     html, body {
         height: 100%;
         min-height: 100vh;
+        overflow-x: hidden;
     }
 
     body {
@@ -28,6 +29,7 @@
         display: flex;
         flex-direction: column;
         padding: 0;
+        min-width: 320px;
     }
 
     h1 {
@@ -147,6 +149,7 @@
         font-size: 1.3rem;
         border-top: 4px solid #d4af37;
         margin-top: 30px;
+        flex-shrink: 0;
     }
 
     footer:before {
@@ -163,8 +166,72 @@
         font-size: 1.5rem;
     }
 
-    /* АДАПТАЦИЯ ПОД ТЕЛЕФОН */
-    @media (max-width: 768px) {
+    /* ГОРИЗОНТАЛЬНАЯ ОРИЕНТАЦИЯ НА ТЕЛЕФОНЕ */
+    @media (max-width: 768px) and (orientation: landscape) {
+        body {
+            height: auto;
+            min-height: 100vh;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            padding: 15px 20px;
+            letter-spacing: 2px;
+        }
+
+        .container {
+            padding: 20px;
+            gap: 20px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-auto-rows: minmax(auto, max-content);
+        }
+
+        .block {
+            padding: 18px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .block h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .photo-container {
+            margin: 10px 0;
+            flex: 1;
+            min-height: 150px;
+        }
+
+        .photo {
+            height: 100%;
+            min-height: 150px;
+            max-height: 180px;
+        }
+
+        details {
+            font-size: 1rem;
+            padding: 12px;
+            margin-top: 15px;
+            flex-shrink: 0;
+        }
+
+        summary {
+            font-size: 1.1rem;
+            padding: 8px;
+        }
+
+        footer {
+            font-size: 1.1rem;
+            padding: 15px 20px;
+            margin-top: 20px;
+        }
+    }
+
+    /* ВЕРТИКАЛЬНАЯ ОРИЕНТАЦИЯ НА ТЕЛЕФОНЕ */
+    @media (max-width: 768px) and (orientation: portrait) {
         body {
             min-height: 100vh;
             height: auto;
@@ -215,7 +282,8 @@
         }
     }
 
-    @media (max-width: 480px) {
+    /* МАЛЕНЬКИЕ ЭКРАНЫ ВЕРТИКАЛЬНО */
+    @media (max-width: 480px) and (orientation: portrait) {
         h1 {
             font-size: 1.9rem;
             padding: 18px 12px;
@@ -251,6 +319,31 @@
             padding: 18px 12px;
         }
     }
+
+    /* МАЛЕНЬКИЕ ЭКРАНЫ ГОРИЗОНТАЛЬНО */
+    @media (max-width: 667px) and (orientation: landscape) {
+        .container {
+            grid-template-columns: 1fr;
+            padding: 15px;
+        }
+        
+        .photo-container {
+            min-height: 120px;
+        }
+        
+        .photo {
+            max-height: 140px;
+        }
+        
+        h1 {
+            font-size: 1.8rem;
+            padding: 12px 15px;
+        }
+        
+        .block h2 {
+            font-size: 1.4rem;
+        }
+    }
 </style>
 </head>
 
@@ -280,12 +373,12 @@
     <div class="block style-b">
         <h2>Место проведения</h2>
         <div class="photo-container">
-            <img class="photo" src="https://via.placeholder.com/600x300/1e3a2b/d4af37?text=Имение+Vetspidini" alt="Фото места">
+            <img class="photo" src="images/pils.jpg" alt="Фото места">
         </div>
         <details>
             <summary>Подробнее о месте</summary>
             <p>
-                Ждем всех 27 декабря 2025 года в 17-00 в имении "Vetspidini".
+                Ждем всех 27 декабря 2025 года в 17-00 в имении "Veсpidiņi".
             </p>
             <p>
                 P.S. Madame Irin и Monsieur Igor выражают надежду на своевременное прибытие гостей.
@@ -304,9 +397,10 @@
             <p>
                 Хозяева салона объявляют новые утончённые традиции.  
                 В нашем доме не будет места суетливой возне на кухне и шумным приготовлениям.  
-                Каждый гость прибывает с уже приготовленными и изящно нарезанными закусками — достойными немедленной подачи к столу.  
+                Каждый гость прибывает с уже приготовленными и изящно нарезанными закусками — достойными немедленной подачи к столу. 
                 Пусть всё будет эстетично, изысканно и удобно: маленькие угощения, которые можно взять рукой и вкушать без лишних хлопот,  
                 сохраняя лёгкость беседы и благородство атмосферы истинного литературного салона.
+                Напитки каждый пришедший выбирает и приносит для себя сам.
             </p>
         </details>
     </div>
@@ -315,14 +409,15 @@
     <div class="block style-b">
         <h2>Dress code</h2>
         <div class="photo-container">
-            <img class="photo" src="https://via.placeholder.com/600x300/1e3a2b/d4af37?text=Вечерние+наряды" alt="Фото стиля">
+            <img class="photo" src="images/code.jpg" alt="Фото стиля">
         </div>
         <details>
             <summary>Подробнее о дресс-коде</summary>
             <p>
                 Дамы приглашаются в нарядах, приближённых к вечерним — строгих и изысканных, выдержанных в спокойных тонах.  
                 Платья должны подчёркивать грацию и утончённость, создавая атмосферу благородного собрания.  
-                Мужчины — в костюмах, рубашках и пиджаках, аккуратных и строгих, соответствующих духу салона.  
+                Мужчины — в костюмах, рубашках и пиджаках, аккуратных и строгих, соответствующих духу салона. 
+                Просьба выбрать мягкую обувь, соответствующую наряду, дабы поступь была чуть слышна по паркету. 
                 Каждый образ должен быть гармоничным, элегантным и уместным, чтобы гости вместе создавали общее впечатление изысканности и вкуса.
             </p>
         </details>
@@ -336,5 +431,3 @@
 
 </body>
 </html>
-
-
