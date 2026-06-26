@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Приглашение на День Рождения Наташи</title>
+  <meta name="description" content="Приглашение на празднование дня рождения Наташи в кафе Resto 65" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #9c4c70;
+      --fg: #100311;
+      --brand: #eae1e1;
+      --brand-2: #ffb84d;
+      --ring: #161e2e;
+      --accent: #8e6bff;
+      --gradient-start: #1224ae;
+      --gradient-end: #1e1e1d;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--fg);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
+    img{max-width:100%;display:block}
+
+    .title,
+    .section-title,
+    .footer-text,
+    .brand-text {
+      font-family:'Playfair Display',serif;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-align:center;
+      text-transform:uppercase;
+      letter-spacing:0.08em;
+      font-weight:700;
+      margin:0;
+      text-shadow: none;
+    }
+    .title{font-size:clamp(38px,9vw,64px);}
+
+    /* === ЗДЕСЬ ИСПРАВЛЕН ЦВЕТ НА БЕЛЫЙ === */
+    .subtitle {
+      font-size: clamp(18px, 4vw, 24px);
+      margin: 4px 0 12px;
+      color: #ffffff; /* ТЕПЕРЬ БЕЛЫЙ */
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+    }
+
+    .hero{position:relative;min-height:92svh;display:grid;place-items:center;padding:24px;overflow:hidden}
+    .hero-inner{width:min(980px,100%);display:grid;gap:20px;align-items:center}
+    
+    .hero-media {
+      aspect-ratio: 1 / 1;
+      max-width: 280px;
+      margin: 0 auto;
+      border-radius: 62px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #ffe6b0, #ffcccc);
+      border: 4px solid var(--brand-2);
+      box-shadow: 0 12px 40px rgba(255, 107, 107, 0.3);
+    }
+
+    .description{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:2.2rem;line-height:1.6;color:var(--fg);margin-top:12px;text-align:center;background: rgba(255, 255, 255, 0.5); padding: 24px; border-radius: 32px; backdrop-filter: blur(4px); border: 1px solid var(--ring);}
+    .divider{margin:28px auto;height:4px;width:80px;background:linear-gradient(90deg,var(--brand),var(--brand-2));border-radius:4px;}
+
+    .topbar{position:sticky;top:0;z-index:50;background:rgba(255, 247, 230, 0.85);backdrop-filter:blur(8px);border-bottom:2px solid var(--brand-2)}
+    .topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;width:min(1100px,100%);margin:0 auto}
+    .brand{display:flex;align-items:center;gap:10px}
+    .logo{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:0 0 0 3px #fff, 0 0 0 5px var(--brand-2);}
+
+    .footer{padding:36px 16px;text-align:center; border-top: 2px solid var(--ring); margin-top: 20px;}
+    .footer-text { -webkit-text-fill-color: var(--brand); background: none; color: var(--brand); font-size: 1.2rem; }
+
+    @media (max-width: 600px) {
+      .description { font-size: 1.6rem; padding: 16px; }
+      .hero-media { max-width: 200px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <span class="brand-text">Приглашение</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <h1 class="title">ДЕВОЧКИ</h1>
+      <p class="subtitle">Приглашаю отметить мой День Рождения</p>
+
+      <h1 class="title" style="font-size: clamp(24px, 5vw, 40px); -webkit-text-fill-color: #ffffff; background: none; color: #ffffff;">дата и время : 25 ИЮНЯ В 19-00</h1>
+
+      <div class="divider"></div>
+
+      <div class="description">
+        🌸 Оксана, Вета и Галя! <br />
+        Жду вас на скромный вечер. <br />
+        Будем наслаждаться суши-сетом и бокалом вина в уютной атмосфере. В этот раз этот день хочу провести тихо в вашей компании.
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="divider"></div>
+    <div style="text-align: center; font-family: 'Playfair Display', serif; font-size: 1.4rem;">
+      <a href="https://resto65.lv" target="_blank" style="color: var(--brand); text-decoration: none; border-bottom: 3px dotted var(--brand-2); padding-bottom: 4px;">
+        МЕСТО ВСТРЕЧИ: 🌐 resto65.lv
+      </a>
+    </div>
+  </footer>
+</body> 
+</html>
